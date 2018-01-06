@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
  */
 public class LoginPresenterTest {
 
+    private LoginPresenter loginPresenter;
     @Before
     public void setUp() throws Exception {
     }
