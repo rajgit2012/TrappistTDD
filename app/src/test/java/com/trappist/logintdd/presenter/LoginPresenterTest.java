@@ -16,7 +16,6 @@ public class LoginPresenterTest {
 
     @Before
     public void setUp() throws Exception {
-        //this.loginPresenter;
     }
 
     @After
