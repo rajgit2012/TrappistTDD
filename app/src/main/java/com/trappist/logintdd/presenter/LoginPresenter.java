@@ -6,11 +6,15 @@ package com.trappist.logintdd.presenter;
 
 public class LoginPresenter {
 
+    private static final int MAX_LOGIN_ATTEMPT = 3;
+    private int loginAttempt;
+
     public int incrementLoginAttempt() {
-        return 0;
+        loginAttempt = loginAttempt + 1;
+        return loginAttempt;
     }
 
     public boolean isLoginAttemptExceeded() {
-        return false;
+        return loginAttempt >= MAX_LOGIN_ATTEMPT;
     }
 }
