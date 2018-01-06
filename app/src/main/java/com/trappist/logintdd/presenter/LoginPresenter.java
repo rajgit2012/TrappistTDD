@@ -21,7 +21,6 @@ public class LoginPresenter {
     }
 
     public boolean isLoginAttemptNotExceeded() {
-        System.out.println("Attempt" + ""+loginAttempt);
         return loginAttempt <= MAX_LOGIN_ATTEMPT;
     }
 
