@@ -5,4 +5,12 @@ package com.trappist.logintdd.presenter;
  */
 
 public class LoginPresenter {
+
+    public int incrementLoginAttempt() {
+        return 0;
+    }
+
+    public boolean isLoginAttemptExceeded() {
+        return false;
+    }
 }
