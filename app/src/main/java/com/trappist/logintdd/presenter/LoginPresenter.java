@@ -1,7 +1,5 @@
 package com.trappist.logintdd.presenter;
 
-import android.util.Log;
-
 /**
  * Created by Raj Forhad on 06/01/2018.
  */
@@ -9,7 +7,12 @@ import android.util.Log;
 public class LoginPresenter {
 
     private static final int MAX_LOGIN_ATTEMPT = 3;
+    private final LoginView loginView;
     private int loginAttempt;
+
+    public LoginPresenter(LoginView loginView){
+        this.loginView = loginView;
+    }
 
     public int incrementLoginAttempt() {
         loginAttempt = loginAttempt + 1;
@@ -24,19 +27,26 @@ public class LoginPresenter {
         return loginAttempt <= MAX_LOGIN_ATTEMPT;
     }
 
-    public boolean isLoginSuccess(String username, String password) {
+    public void resetLoginAttempt() {
+        loginAttempt = 0;
+    }
+
+    public void doLogin(String username, String password) {
 
         if(isLoginAttemptExceeded()){
-            return false;
+            loginView.showErrorMessageForMaxLoginAttempt();
+            return;
         }
 
         if(username.equals("rajforhad") && password.equals("123456")){
-            return true;
+            loginView.showLoginSuccessMessage();
+            resetLoginAttempt();
+            return;
         }
 
         // increment for failed login
         incrementLoginAttempt();
 
-        return false;
+        loginView.showErrorMessageForWrongUsernamePassword();
     }
 }
